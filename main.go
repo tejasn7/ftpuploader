@@ -55,12 +55,13 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Read binary file
 	data, err := readBinaryFile(filePath)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%T\n", data)
 
+	// Upload file tp server
 	err = c.Stor(remoteName, data)
 	if err != nil {
 		log.Fatal(err)
