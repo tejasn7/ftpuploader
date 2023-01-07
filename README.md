@@ -1,6 +1,6 @@
 # ftpuploader
 
-Simple Go program to upload files to pyftpserver (useful in OSCP)
+Simple Go program to upload files to pyftpserver (useful in OSCP to transfer file from windows to linux)
 
 ## Dependencies
 
