@@ -35,16 +35,17 @@ func readBinaryFile(filePath string) (*bytes.Buffer, error) {
 func main() {
 	fmt.Println("=== FTP File Uploader ===")
 
-	if len(os.Args) < 4 {
-		fmt.Println("Usage: ./ftpuploader.exe SERVER_IP LOCAL_FILE_PATH REMOTE_FILE_NAME")
+	if len(os.Args) < 5 {
+		fmt.Println("Usage: ./ftpuploader.exe SERVER_IP SERVER_PORT LOCAL_FILE_PATH REMOTE_FILE_NAME")
 		os.Exit(1)
 	}
 
 	// Connect to FTP
 	ip := os.Args[1]
-	filePath := os.Args[2]
-	remoteName := os.Args[3]
-	c, err := ftp.Dial(ip+":2121", ftp.DialWithTimeout(5*time.Second))
+	filePath := os.Args[3]
+	remoteName := os.Args[4]
+	remotePort := os.Args[2]
+	c, err := ftp.Dial(ip+":"+remotePort, ftp.DialWithTimeout(5*time.Second))
 	if err != nil {
 		log.Fatal(err)
 	}
