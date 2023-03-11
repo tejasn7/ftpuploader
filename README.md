@@ -20,6 +20,12 @@ GOOS=windows GOARCH=amd64 go build -o ftpuploader.exe
 GOOS=linux GOARCH=amd64 go build -o ftpuploader
 ```
 
+If you get an error regarding `GLIB_2.32` not found
+
+```bash
+GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -o ftpuploader
+```
+
 ## Start pyftpserver
 
 ```bash
@@ -29,7 +35,7 @@ source venv/bin/activate # Activate it
 
 pip3 install pyftpdlib # Install pyftpdlib
 
-python3 pyftpserver.py # Start server on port 2121 hosting current working directory
+python3 pyftpserver.py # Start server on port 2121 hosting current working directory, add port number as argument for custom port
 ```
 
 ## Usage
@@ -38,7 +44,7 @@ python3 pyftpserver.py # Start server on port 2121 hosting current working direc
 ./ftpuploader
 
 === FTP File Uploader ===
-Usage: ./ftpuploader.exe SERVER_IP LOCAL_FILE_PATH REMOTE_FILE_NAME
+Usage: ./ftpuploader.exe SERVER_IP SERVER_PORT LOCAL_FILE_PATH REMOTE_FILE_NAME
 
-./ftpuploader.exe 192.168.1.67 C:\\Windows\\Temp\\binary_file.exe binary_file.exe
+./ftpuploader.exe 192.168.1.67 2121 C:\\Windows\\Temp\\binary_file.exe binary_file.exe
 ```
